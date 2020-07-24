@@ -1,5 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 
+const FormStyle = styled.form`
+  text-align: center;
+`;
 export default function Form(props) {
   const {
     formValues,
@@ -22,7 +26,7 @@ export default function Form(props) {
     inputChange(name, value);
   };
   return (
-    <form onSubmit={onSubmit}>
+    <FormStyle onSubmit={onSubmit}>
       <label htmlFor="nameInput">
         Name:
         <input
@@ -33,6 +37,7 @@ export default function Form(props) {
           onChange={onInputChange}
         />
       </label>
+      <br />
       <label htmlFor="emailInput">
         Email:
         <input
@@ -43,6 +48,7 @@ export default function Form(props) {
           onChange={onInputChange}
         />
       </label>
+      <br />
       <label htmlFor="phoneInput">
         Phone number:
         <input
@@ -53,6 +59,7 @@ export default function Form(props) {
           onChange={onInputChange}
         />
       </label>
+      <br />
       <label htmlFor="size">
         Select pizza size:
         <select onChange={onInputChange} name="size" value={formValues.size}>
@@ -71,8 +78,10 @@ export default function Form(props) {
           <div>{formErrors.size}</div>
         </div>
       </label>
+      <br />
       <div className="toppings">
         Toppings:
+        <br />
         <label>
           Pepperoni
           <input
@@ -82,6 +91,7 @@ export default function Form(props) {
             checked={formValues.toppings.pepperoni}
           />
         </label>
+        <br />
         <label>
           Sausage
           <input
@@ -91,6 +101,7 @@ export default function Form(props) {
             checked={formValues.toppings.sausage}
           />
         </label>
+        <br />
         <label>
           Bacon
           <input
@@ -100,6 +111,7 @@ export default function Form(props) {
             checked={formValues.toppings.bacon}
           />
         </label>
+        <br />
         <label>
           Ham
           <input
@@ -109,6 +121,7 @@ export default function Form(props) {
             checked={formValues.toppings.ham}
           />
         </label>
+        <br />
         <label>
           Green peppers
           <input
@@ -118,6 +131,7 @@ export default function Form(props) {
             checked={formValues.toppings.greenPeppers}
           />
         </label>
+        <br />
         <label>
           Pineapple
           <input
@@ -127,6 +141,7 @@ export default function Form(props) {
             checked={formValues.toppings.pineapple}
           />
         </label>
+        <br />
         <label>
           Tomatoes
           <input
@@ -136,6 +151,7 @@ export default function Form(props) {
             checked={formValues.toppings.tomatoes}
           />
         </label>
+        <br />
         <label>
           Mushrooms
           <input
@@ -145,9 +161,12 @@ export default function Form(props) {
             checked={formValues.toppings.mushrooms}
           />
         </label>
+        <br />
       </div>
+      <br />
       <label htmlFor="special">
         Special Instructions:
+        <br />
         <textarea
           id="special"
           name="special"
@@ -155,11 +174,12 @@ export default function Form(props) {
           onChange={onInputChange}
         />
       </label>
+      <br />
       <button
       //   disabled={disabled}
       >
         Add to Order
       </button>
-    </form>
+    </FormStyle>
   );
 }

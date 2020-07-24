@@ -6,6 +6,7 @@ import Form from "./Form";
 import formSchema from "../validation/formSchema";
 import * as yup from "yup";
 import Pizza from "./Pizza";
+import styled from "styled-components";
 // https://reqres.in/api/users
 const initialFormValues = {
   name: "",
@@ -31,6 +32,17 @@ const initialFormErrors = {
 };
 const initialPizzas = [];
 const initialDisabled = true;
+
+const HomeStyle = styled.header`
+  display: flex;
+  justify-content: space-between;
+  nav {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    margin: 2% 0;
+  }
+`;
 const App = () => {
   const [pizzas, setPizzas] = useState(initialPizzas);
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -88,16 +100,19 @@ const App = () => {
   useEffect(() => {
     formSchema.isValid(formValues).then((valid) => {
       setDisabled(!valid);
+      console.log(valid);
     });
   }, [formValues]);
   return (
     <>
       <div className="App">
-        <nav>
+        <HomeStyle>
           <h1>Sam's Pizza</h1>
-          <Link to="/">Home</Link>
-          <Link to="/pizza">Order</Link>
-        </nav>
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="/pizza">Order</Link>
+          </nav>
+        </HomeStyle>
         <Route exact path="/">
           <Home />
         </Route>
